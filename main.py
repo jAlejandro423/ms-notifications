@@ -50,7 +50,9 @@ def send_email_endpoint():
     data = request.json
     subject = data.get('subject')
     recipient = data.get('recipient')
-    body_html = '<h1>Welcome to Our Service!</h1>'
+    content= data.get('content')
+
+    body_html= generate_template(content)
 
     success = send_email(subject, recipient, body_html)
     print(f"Success: {success}")
@@ -61,6 +63,32 @@ def send_email_endpoint():
         print('Failed to send email')
         return jsonify({'message': 'Failed to sent email'})
     
+    #EndPoint para listar users
+
+@app.route('/get-users', methods=['GET'])
+def get_users():
+        return jsonify([
+        {'name': 'John Doe', 'email': 'name@example.com'},
+        {'name': 'John Doe', 'email': 'name@example.com'}
+    ])
+    
+def generate_template(content):
+    # Define la estructura básica del HTML con estilos
+    template = f"""
+    <html>
+    <head>
+        <title>Contenido en Negrita</title>
+    </head>
+    <body>
+        <b>{content}</b>
+    </body>
+    </html>
+    """
+    return template
+
+# Supongamos que obtienes el contenido de alguna fuente
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)
