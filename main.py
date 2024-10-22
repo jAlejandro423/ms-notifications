@@ -79,7 +79,7 @@ def generate_template(content):
     <head>
         <title>Contenido en Negrita</title>
     </head>
-    <body>
+    <body style="color: red">
         <b>{content}</b>
     </body>
     </html>
