@@ -216,8 +216,6 @@ def generate_template(subject, content):
         </head>
         <body>
             {content}
-        <body>
-            {content}
         </body>
         </html>
         """
