@@ -100,17 +100,17 @@ def generate_template(subject, content):
             </html>
             """ )
     
-    elif(subject == "Codigo autenticacion"):
+    elif(subject == "Código de autenticación"):
         return (f"""
             <html>
             <head>
-                <title>Codigo de autenticacion</title>
+                <title>Código de autenticacion</title>
             </head>
             <body>
                 <div style='font-family: Arial, sans-serif; background-color: #f6f6f6; margin: 0; padding: 20px;'> 
                     <div style='max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);'> 
-                        <h1 style='color: #333;'>¡Codigo de autenticacion!</h1> 
-                        <p>Tu Codigo de autenticacion es el siguiente:</p> 
+                        <h1 style='color: #333;'>¡Código de autenticacion!</h1> 
+                        <p>Tu Código de autenticacion es el siguiente:</p> 
                         <div style='background-color: #e7f3fe; border: 1px solid #a6c8ff; padding: 10px; border-radius: 5px; font-family: monospace; font-size: 16px; color: #1a73e8;'>
                             {content}
                         </div> 
