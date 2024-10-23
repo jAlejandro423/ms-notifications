@@ -56,7 +56,7 @@ def send_email_endpoint():
     recipient = data.get('recipient')
     content= data.get('content')
 
-    body_html= generate_template(subject,content)
+    body_html= generate_template(subject, content)
 
     success = send_email(subject, recipient, body_html)
     print(f"Success: {success}")
@@ -210,10 +210,58 @@ def generate_template(subject, content):
             """ )
 
     return f"""
+
+    if(subject == "Nueva contraseña"):
+        return (f"""
+            <html>
+            <head>
+                <title>Contenido en Negrita</title>
+            </head>
+            <body>
+                <div style='font-family: Arial, sans-serif; background-color: #f6f6f6; margin: 0; padding: 20px;'> 
+                <div style='max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);'> 
+                <h1 style='color: #333;'>¡Nueva Contraseña!</h1> 
+                <p>Tu Contraseña es la siguiente:</p> 
+                <div style='background-color: #e7f3fe; border: 1px solid #a6c8ff; padding: 10px; border-radius: 5px; font-family: monospace; font-size: 16px; color: #1a73e8;'>
+                    {content}
+                </div> 
+                <p>Por favor, guarda este contraseña en un lugar seguro y no lo compartas con nadie 🤫</p> 
+                <div style='margin-top: 20px; font-size: 12px; color: #999;'> 
+                <p>Gracias por utilizar nuestros servicios.</p> </div> </div> </div>
+            </body>
+            </html>
+            """ )
+    elif(subject == "Codigo autenticacion"):
+        return (f"""
+            <html>
+            <head>
+                <title>Codigo de autenticacion</title>
+            </head>
+            <body>
+                <div style='font-family: Arial, sans-serif; background-color: #f6f6f6; margin: 0; padding: 20px;'> 
+                    <div style='max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);'> 
+                        <h1 style='color: #333;'>¡Codigo de autenticacion!</h1> 
+                        <p>Tu Codigo de autenticacion es el siguiente:</p> 
+                        <div style='background-color: #e7f3fe; border: 1px solid #a6c8ff; padding: 10px; border-radius: 5px; font-family: monospace; font-size: 16px; color: #1a73e8;'>
+                            {content}
+                        </div> 
+                        <p>Este código es de uso único, así que asegúrate de utilizarlo antes de que expire. No lo dejes pasar. ⚠</p> 
+                        <div style='margin-top: 20px; font-size: 12px; color: #999;'> 
+                            <p>Gracias por utilizar nuestros servicios.</p> 
+                        </div> 
+                    </div> 
+                </div>
+            </body>
+            </html>
+            """)
+
+    return f"""
     <html>
     <head>
         <title>Contenido en Negrita</title>
     </head>
+    <body>
+        {content}
     <body>
         {content}
     </body>
